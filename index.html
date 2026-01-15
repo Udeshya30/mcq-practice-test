@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>MCQ Test App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="app">
+
+        <div class="card">
+
+            <h1 class="title">MCQ Practice Test</h1>
+
+            <!-- Start Screen -->
+            <div id="start-screen" class="center">
+                <p class="subtitle">Select number of questions • Time Tracked</p>
+
+                <div class="select-wrapper">
+                    <select id="num-questions">
+                        <option value="10">10 Questions</option>
+                        <option value="20">20 Questions</option>
+                        <option value="50" selected>50 Questions</option>
+                        <option value="all">All Questions</option>
+                    </select>
+                </div>
+
+                <br>
+                <button class="btn primary" onclick="startTest()">Start Test</button>
+            </div>
+
+
+
+            <!-- Quiz Screen -->
+            <div id="quiz-screen" class="hidden">
+                <div class="top-bar">
+                    <span id="timer" class="badge">⏱ 0s</span>
+                    <span id="question-count" class="badge"></span>
+                </div>
+
+                <div class="progress">
+                    <div id="progress-bar"></div>
+                </div>
+
+                <h2 id="question" class="question"></h2>
+
+                <div id="options" class="options"></div>
+
+                <button class="btn next" onclick="nextQuestion()">Next</button>
+            </div>
+
+            <!-- Result Screen -->
+            <div id="result-screen" class="hidden">
+                <h2 class="result-title">Test Completed 🎉</h2>
+
+                <div class="summary">
+                    <div><strong id="score"></strong></div>
+                    <div><strong id="wrong-count"></strong></div>
+                    <div><strong id="time-taken"></strong></div>
+                </div>
+
+                <h3 class="wrong-title">Review Wrong Answers</h3>
+                <div id="wrong-answers" class="wrong-box"></div>
+
+                <div class="center">
+                    <button class="btn primary" onclick="startTest()">Retest</button>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="questions.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

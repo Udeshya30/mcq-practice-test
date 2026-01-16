@@ -185,7 +185,7 @@ function showNotes() {
 
   let notesHTML = `
     <h4 style="margin-bottom:15px;color:#2b2f77;">
-      📌 Topics You Should Revise
+      Topics You Should Revise
     </h4>
   `;
 
@@ -331,5 +331,6 @@ function shuffleArray(array) {
 function pad(num) {
   return num.toString().padStart(2, "0");
 }
+
 
 

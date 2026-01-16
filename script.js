@@ -142,8 +142,18 @@ function finishTest() {
       wrongHTML += `
         <p>
           <strong>Q:</strong> ${q.question}<br>
-          <strong>Your Answer:</strong> ${userAnswers[i] || "Not Answered"}<br>
-          <strong>Correct Answer:</strong> ${q.correctAnswer}
+          // <strong>Your Answer:</strong> ${userAnswers[i] || "Not Answered"}<br>
+          // <strong>Correct Answer:</strong> ${q.correctAnswer}
+          <strong>Your Answer:</strong> ${
+            userAnswers[i]
+              ? `${userAnswers[i]}. ${q.options[userAnswers[i]]}`
+              : "Not Answered"
+          }<br>
+          
+          <strong>Correct Answer:</strong> ${
+            q.correctAnswer
+          }. ${q.options[q.correctAnswer]}
+
         </p>
         <hr>
       `;
@@ -170,3 +180,4 @@ function shuffleArray(array) {
 function pad(num) {
   return num.toString().padStart(2, "0");
 }
+

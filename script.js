@@ -172,6 +172,158 @@ function finishTest() {
   document.getElementById("wrong-answers").innerHTML = wrongHTML;
 }
 
+function showNotes() {
+  const dropdown = document.getElementById("notes-topics");
+  const selectedOptions = Array.from(dropdown.selectedOptions);
+  const output = document.getElementById("notes-output");
+
+  if (selectedOptions.length === 0) {
+    output.innerHTML = "<p>Please select at least one topic.</p>";
+    output.classList.remove("hidden");
+    return;
+  }
+
+  let notesHTML = `
+    <h4 style="margin-bottom:15px;color:#2b2f77;">
+      📌 Topics You Should Revise
+    </h4>
+  `;
+
+  selectedOptions.forEach(option => {
+    notesHTML += getNotesForTopic(option.value);
+  });
+
+  output.innerHTML = notesHTML;
+  output.classList.remove("hidden");
+}
+
+
+
+function getNotesForTopic(topic) {
+  const notes = {
+    ai_basics: `
+      <div class="note-block">
+        <h5>AI Basics</h5>
+        <ul>
+          <li>AI = Machines that mimic human intelligence</li>
+          <li>ML = Machines learn patterns from data</li>
+          <li>Deep Learning = Neural networks with many layers</li>
+          <li>Examples: Chatbots, Face recognition, Recommendation systems</li>
+          <li>Narrow AI = Task specific (most AI today)</li>
+          <li>General AI = Human-level intelligence (future goal)</li>
+        </ul>
+      </div>
+    `,
+
+    ml_basics: `
+      <div class="note-block">
+        <h5>Machine Learning</h5>
+        <ul>
+          <li>Supervised Learning → Labeled data (Classification, Regression)</li>
+          <li>Unsupervised Learning → No labels (Clustering, PCA)</li>
+          <li>Reinforcement Learning → Reward & punishment</li>
+          <li>Features = Input variables</li>
+          <li>Labels = Target output</li>
+          <li>Overfitting = Memorizing training data</li>
+          <li>Underfitting = Too simple model</li>
+        </ul>
+      </div>
+    `,
+
+    deep_learning: `
+      <div class="note-block">
+        <h5>Deep Learning</h5>
+        <ul>
+          <li>Neural Network = Layers of neurons</li>
+          <li>CNN → Image processing</li>
+          <li>RNN / LSTM → Sequential data (text, speech)</li>
+          <li>Transformer → Used in LLMs</li>
+          <li>Epoch = One full dataset pass</li>
+          <li>Batch = Subset of data</li>
+          <li>Activation: ReLU, Sigmoid</li>
+          <li>Loss: Cross Entropy (classification)</li>
+          <li>Optimizer: Adam</li>
+        </ul>
+      </div>
+    `,
+
+    llm_genai: `
+      <div class="note-block">
+        <h5>LLM & Generative AI</h5>
+        <ul>
+          <li>LLM = Large Language Model</li>
+          <li>Examples: GPT, BERT</li>
+          <li>Token = Word or sub-word unit</li>
+          <li>Context Window = Max input size</li>
+          <li>Temperature = Randomness control</li>
+          <li>Hallucination = Incorrect output</li>
+          <li>RLHF = Reinforcement Learning with Human Feedback</li>
+          <li>Generative AI = Generates new content (text, image, audio)</li>
+        </ul>
+      </div>
+    `,
+
+    prompting: `
+      <div class="note-block">
+        <h5>Prompt Engineering</h5>
+        <ul>
+          <li>Zero-shot → No examples</li>
+          <li>Few-shot → Few examples</li>
+          <li>Chain-of-thought → Step-by-step reasoning</li>
+          <li>System prompt → Controls model behavior</li>
+          <li>Good prompt = Clear + Specific + Structured</li>
+          <li>Bad prompt = Vague, short, unclear</li>
+        </ul>
+      </div>
+    `,
+
+    rag: `
+      <div class="note-block">
+        <h5>RAG (Retrieval Augmented Generation)</h5>
+        <ul>
+          <li>Used to reduce hallucination</li>
+          <li>Combines Vector DB + LLM</li>
+          <li>Flow: Query → Embeddings → Vector DB → Retrieve → LLM</li>
+          <li>Embeddings = Numerical representation of text</li>
+          <li>Vector DB = FAISS, Pinecone, Chroma</li>
+          <li>Chunking = Splitting documents</li>
+        </ul>
+      </div>
+    `,
+
+    cloud: `
+      <div class="note-block">
+        <h5>Cloud AI Platforms</h5>
+        <ul>
+          <li>AWS SageMaker → Amazon ML platform</li>
+          <li>Azure AI / Azure ML → Microsoft ML platform</li>
+          <li>Google Vertex AI → Google ML platform</li>
+          <li>Used for: Training, Deployment, Scaling</li>
+          <li>Provides GPU, TPU, Auto-scaling</li>
+        </ul>
+      </div>
+    `,
+
+    usecases: `
+      <div class="note-block">
+        <h5>Real-world AI Use-cases</h5>
+        <ul>
+          <li>Chatbots → NLP + LLM</li>
+          <li>Recommendation Engines → ML</li>
+          <li>Fraud Detection → Anomaly Detection</li>
+          <li>OCR → Extract text from images</li>
+          <li>Speech Recognition → Convert voice to text</li>
+          <li>Face Recognition → Computer Vision</li>
+        </ul>
+      </div>
+    `
+  };
+
+  return notes[topic] || "";
+}
+
+
+
 function shuffleArray(array) {
   return array.sort(() => Math.random() - 0.5);
 }

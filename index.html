@@ -17,6 +17,31 @@
 
             <!-- Start Screen -->
             <div id="start-screen" class="center">
+                <!-- Notes Section -->
+                <div class="notes-panel">
+                    <h3 class="notes-title">📘 Quick Revision Notes</h3>
+                    <p class="notes-subtitle">Select topics to revise before starting the test</p>
+
+                    <div class="notes-dropdown">
+                        <select id="notes-topics">
+                        <option value="ai_basics">AI Basics</option>
+                        <option value="ml_basics">Machine Learning</option>
+                        <option value="deep_learning">Deep Learning</option>
+                        <option value="llm_genai">LLM & Generative AI</option>
+                        <option value="prompting">Prompt Engineering</option>
+                        <option value="rag">RAG</option>
+                        <option value="cloud">Cloud AI Platforms</option>
+                        <option value="usecases">Real-world Use-cases</option>
+                        </select>
+                    </div>
+
+                    <button class="btn primary notes-btn" onclick="showNotes()">Show Notes</button>
+
+                    <div id="notes-output" class="notes-output hidden"></div>
+                </div>
+
+
+
                 <p class="subtitle">Select number of questions • Time Tracked</p>
 
                 <div class="select-wrapper">
